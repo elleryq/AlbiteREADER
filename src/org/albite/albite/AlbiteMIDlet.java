@@ -799,7 +799,7 @@ public class AlbiteMIDlet extends MIDlet
         if (bookBrowser == null) {//GEN-END:|32-getter|0|32-preInit
             // write pre-init user code here
             bookBrowser = new FileBrowser(getDisplay());//GEN-BEGIN:|32-getter|1|32-postInit
-            bookBrowser.setTitle("Open book");
+            bookBrowser.setTitle("\u958B\u555F\u66F8\u672C");
             bookBrowser.setCommandListener(this);
             bookBrowser.setFilter("");
             bookBrowser.addCommand(FileBrowser.SELECT_FILE_COMMAND);
@@ -910,7 +910,7 @@ public class AlbiteMIDlet extends MIDlet
             loadBook.setCommandListener(this);
             loadBook.setFullScreenMode(true);
             loadBook.setImage(getAlbiteLogo());
-            loadBook.setText("Opening book...");
+            loadBook.setText("\u6B63\u5728\u958B\u555F\u66F8\u672C...");
             loadBook.setTextFont(getLoadingFont());
             loadBook.setTask(getLoadBookTask());//GEN-END:|157-getter|1|157-postInit
             // write post-init user code here
@@ -1448,7 +1448,7 @@ public class AlbiteMIDlet extends MIDlet
     public Form getAcceptLicense() {
         if (acceptLicense == null) {//GEN-END:|372-getter|0|372-preInit
             // write pre-init user code here
-            acceptLicense = new Form("License agreement", new Item[] { getLicense1(), getLicense5(), getLicense13() });//GEN-BEGIN:|372-getter|1|372-postInit
+            acceptLicense = new Form("\u6388\u6B0A\u540C\u610F", new Item[] { getLicense1(), getLicense5(), getLicense13() });//GEN-BEGIN:|372-getter|1|372-postInit
             acceptLicense.addCommand(getNO_COMMAND());
             acceptLicense.addCommand(getYES_COMMAND());
             acceptLicense.setCommandListener(this);//GEN-END:|372-getter|1|372-postInit
@@ -1466,7 +1466,7 @@ public class AlbiteMIDlet extends MIDlet
     public StringItem getLicense1() {
         if (license1 == null) {//GEN-END:|373-getter|0|373-preInit
             // write pre-init user code here
-            license1 = new StringItem("", "Albite READER is a free ebook reader developed by Svetlin Ankov and licensed under the Apache 2.0 License.");//GEN-BEGIN:|373-getter|1|373-postInit
+            license1 = new StringItem("", "Albite READER\u662FJava\u884C\u52D5\u5E73\u53F0\u4E0A\u7684\u514D\u8CBB\u96FB\u5B50\u66F8\u95B1\u8B80\u5DE5\u5177\uFF0C\u7531Svetlin Ankov\u6240\u958B\u767C\u3002");//GEN-BEGIN:|373-getter|1|373-postInit
             license1.setFont(getNormalFont());//GEN-END:|373-getter|1|373-postInit
             // write post-init user code here
         }//GEN-BEGIN:|373-getter|2|
@@ -1547,7 +1547,7 @@ public class AlbiteMIDlet extends MIDlet
     public StringItem getLicense13() {
         if (license13 == null) {//GEN-END:|427-getter|0|427-preInit
             // write pre-init user code here
-            license13 = new StringItem("", "Do you accept the license?");//GEN-BEGIN:|427-getter|1|427-postInit
+            license13 = new StringItem("", "\u4F60\u63A5\u53D7\u9019\u4EFD\u6388\u6B0A\u55CE?");//GEN-BEGIN:|427-getter|1|427-postInit
             license13.setFont(getNormalFont());//GEN-END:|427-getter|1|427-postInit
             // write post-init user code here
         }//GEN-BEGIN:|427-getter|2|
@@ -1594,23 +1594,23 @@ public class AlbiteMIDlet extends MIDlet
         if (menu == null) {//GEN-END:|429-getter|0|429-preInit
             // write pre-init user code here
             menu = new List("Albite READER" + title + version, Choice.IMPLICIT);//GEN-BEGIN:|429-getter|1|429-postInit
-            menu.append("Open book", null);
-            menu.append("Table of contents", null);
-            menu.append("Bookmarks", null);
-            menu.append("Book details", null);
+            menu.append("\u958B\u555F\u66F8\u672C", null);
+            menu.append("\u76EE\u9304", null);
+            menu.append("\u66F8\u7C64", null);
+            menu.append("\u66F8\u672C\u8A73\u7D30\u8CC7\u8A0A", null);
             menu.append("Setup hyphenation", null);
-            menu.append("Set chapter encoding", null);
+            menu.append("\u8A2D\u5B9A\u7AE0\u7BC0\u7DE8\u78BC", null);
             menu.append("Lookup word", null);
             menu.append("Convert number", null);
-            menu.append("Font size", null);
+            menu.append("\u5B57\u9AD4\u5927\u5C0F", null);
             menu.append("Switch day / night", null);
-            menu.append("Choose colors", null);
-            menu.append("Screen mode", null);
-            menu.append("Page interaction", null);
-            menu.append("Page layout", null);
+            menu.append("\u9078\u64C7\u984F\u8272", null);
+            menu.append("\u87A2\u5E55\u6A21\u5F0F", null);
+            menu.append("\u9801\u9762\u4E92\u52D5", null);
+            menu.append("\u9801\u9762\u5E03\u5C40", null);
             menu.append("Set dictionary folder", null);
-            menu.append("About", null);
-            menu.append("Quit", null);
+            menu.append("\u95DC\u65BC", null);
+            menu.append("\u96E2\u958B", null);
             menu.addCommand(getNEXT_COMMAND());
             menu.addCommand(getBACK_COMMAND());
             menu.setCommandListener(this);
@@ -1647,20 +1647,20 @@ public class AlbiteMIDlet extends MIDlet
         // enter pre-action user code here
         String __selectedString = getMenu().getString(getMenu().getSelectedIndex());//GEN-BEGIN:|429-action|1|470-preAction
         if (__selectedString != null) {
-            if (__selectedString.equals("Open book")) {//GEN-END:|429-action|1|470-preAction
+            if (__selectedString.equals("\u958B\u555F\u66F8\u672C")) {//GEN-END:|429-action|1|470-preAction
                 // write pre-action user code here
                 openLibrary();//GEN-LINE:|429-action|2|470-postAction
                 // write post-action user code here
-            } else if (__selectedString.equals("Table of contents")) {//GEN-LINE:|429-action|3|469-preAction
+            } else if (__selectedString.equals("\u76EE\u9304")) {//GEN-LINE:|429-action|3|469-preAction
                 // write pre-action user code here
                 showToc();//GEN-LINE:|429-action|4|469-postAction
                 // write post-action user code here
-            } else if (__selectedString.equals("Bookmarks")) {//GEN-LINE:|429-action|5|936-preAction
+            } else if (__selectedString.equals("\u66F8\u7C64")) {//GEN-LINE:|429-action|5|936-preAction
                 // write pre-action user code here
                 bookCanvas.setupNewBookmark();
                 switchDisplayable(null, getBookmarks());//GEN-LINE:|429-action|6|936-postAction
                 // write post-action user code here
-            } else if (__selectedString.equals("Book details")) {//GEN-LINE:|429-action|7|734-preAction
+            } else if (__selectedString.equals("\u66F8\u672C\u8A73\u7D30\u8CC7\u8A0A")) {//GEN-LINE:|429-action|7|734-preAction
                 // write pre-action user code here
                 showBookInfo();//GEN-LINE:|429-action|8|734-postAction
                 // write post-action user code here
@@ -1668,7 +1668,7 @@ public class AlbiteMIDlet extends MIDlet
                 // write pre-action user code here
                 switchDisplayable(null, getLanguages());//GEN-LINE:|429-action|10|1045-postAction
                 // write post-action user code here
-            } else if (__selectedString.equals("Set chapter encoding")) {//GEN-LINE:|429-action|11|1046-preAction
+            } else if (__selectedString.equals("\u8A2D\u5B9A\u7AE0\u7BC0\u7DE8\u78BC")) {//GEN-LINE:|429-action|11|1046-preAction
                 // write pre-action user code here
                 switchDisplayable(null, getEncodings());//GEN-LINE:|429-action|12|1046-postAction
                 // write post-action user code here
@@ -1682,7 +1682,7 @@ public class AlbiteMIDlet extends MIDlet
                 setEntryForLookup("");
                 enterNumber();//GEN-LINE:|429-action|16|472-postAction
                 // write post-action user code here
-            } else if (__selectedString.equals("Font size")) {//GEN-LINE:|429-action|17|473-preAction
+            } else if (__selectedString.equals("\u5B57\u9AD4\u5927\u5C0F")) {//GEN-LINE:|429-action|17|473-preAction
                 // write pre-action user code here
                 setFontSize();//GEN-LINE:|429-action|18|473-postAction
                 // write post-action user code here
@@ -1691,19 +1691,19 @@ public class AlbiteMIDlet extends MIDlet
                 bookCanvas.cycleColorSchemes();
                 switchDisplayable(null, bookCanvas);//GEN-LINE:|429-action|20|474-postAction
                 // write post-action user code here
-            } else if (__selectedString.equals("Choose colors")) {//GEN-LINE:|429-action|21|475-preAction
+            } else if (__selectedString.equals("\u9078\u64C7\u984F\u8272")) {//GEN-LINE:|429-action|21|475-preAction
                 // write pre-action user code here
                 setColorScheme();//GEN-LINE:|429-action|22|475-postAction
                 // write post-action user code here
-            } else if (__selectedString.equals("Screen mode")) {//GEN-LINE:|429-action|23|476-preAction
+            } else if (__selectedString.equals("\u87A2\u5E55\u6A21\u5F0F")) {//GEN-LINE:|429-action|23|476-preAction
                 // write pre-action user code here
                 setSreenMode();//GEN-LINE:|429-action|24|476-postAction
                 // write post-action user code here
-            } else if (__selectedString.equals("Page interaction")) {//GEN-LINE:|429-action|25|588-preAction
+            } else if (__selectedString.equals("\u9801\u9762\u4E92\u52D5")) {//GEN-LINE:|429-action|25|588-preAction
                 // write pre-action user code here
                 setScrollingOptions();//GEN-LINE:|429-action|26|588-postAction
                 // write post-action user code here
-            } else if (__selectedString.equals("Page layout")) {//GEN-LINE:|429-action|27|935-preAction
+            } else if (__selectedString.equals("\u9801\u9762\u5E03\u5C40")) {//GEN-LINE:|429-action|27|935-preAction
                 // write pre-action user code here
                 switchDisplayable(null, getPageSettings());//GEN-LINE:|429-action|28|935-postAction
                 // write post-action user code here
@@ -1711,11 +1711,11 @@ public class AlbiteMIDlet extends MIDlet
                 // write pre-action user code here
                 switchDisplayable(null, getFolderBrowser());//GEN-LINE:|429-action|30|477-postAction
                 // write post-action user code here
-            } else if (__selectedString.equals("About")) {//GEN-LINE:|429-action|31|478-preAction
+            } else if (__selectedString.equals("\u95DC\u65BC")) {//GEN-LINE:|429-action|31|478-preAction
                 // write pre-action user code here
                 switchDisplayable(null, getShowLicense());//GEN-LINE:|429-action|32|478-postAction
                 // write post-action user code here
-            } else if (__selectedString.equals("Quit")) {//GEN-LINE:|429-action|33|479-preAction
+            } else if (__selectedString.equals("\u96E2\u958B")) {//GEN-LINE:|429-action|33|479-preAction
                 // write pre-action user code here
                 quit();//GEN-LINE:|429-action|34|479-postAction
                 // write post-action user code here
@@ -1748,7 +1748,7 @@ public class AlbiteMIDlet extends MIDlet
     public StringItem getStringItem() {
         if (stringItem == null) {//GEN-END:|448-getter|0|448-preInit
             // write pre-init user code here
-            stringItem = new StringItem("Version:", version);//GEN-BEGIN:|448-getter|1|448-postInit
+            stringItem = new StringItem("\u7248\u672C\uFF1A", version);//GEN-BEGIN:|448-getter|1|448-postInit
             stringItem.setLayout(ImageItem.LAYOUT_LEFT);
             stringItem.setFont(getNormalFont());//GEN-END:|448-getter|1|448-postInit
             // write post-init user code here
@@ -1765,7 +1765,7 @@ public class AlbiteMIDlet extends MIDlet
     public StringItem getStringItem1() {
         if (stringItem1 == null) {//GEN-END:|449-getter|0|449-preInit
             // write pre-init user code here
-            stringItem1 = new StringItem("", "Albite READER is a free ebook reader for the Java ME Platform, developed by Svetlin Ankov.");//GEN-BEGIN:|449-getter|1|449-postInit
+            stringItem1 = new StringItem("", "Albite READER\u662FJava\u884C\u52D5\u5E73\u53F0\u4E0A\u7684\u514D\u8CBB\u96FB\u5B50\u66F8\u95B1\u8B80\u5DE5\u5177\uFF0C\u7531Svetlin Ankov\u6240\u958B\u767C\u3002");//GEN-BEGIN:|449-getter|1|449-postInit
             stringItem1.setFont(getNormalFont());//GEN-END:|449-getter|1|449-postInit
             // write post-init user code here
         }//GEN-BEGIN:|449-getter|2|
@@ -1781,7 +1781,7 @@ public class AlbiteMIDlet extends MIDlet
     public StringItem getStringItem2() {
         if (stringItem2 == null) {//GEN-END:|450-getter|0|450-preInit
             // write pre-init user code here
-            stringItem2 = new StringItem("", "You can get this application and free books from the following link:");//GEN-BEGIN:|450-getter|1|450-postInit
+            stringItem2 = new StringItem("", "\u4F60\u53EF\u4EE5\u5F9E\u4E0B\u9762\u7684\u9023\u7D50\u53D6\u5F97\u9019\u500B\u8EDF\u9AD4\u548C\u514D\u8CBB\u7684\u96FB\u5B50\u66F8\uFF1A");//GEN-BEGIN:|450-getter|1|450-postInit
             stringItem2.setFont(getNormalFont());//GEN-END:|450-getter|1|450-postInit
             // write post-init user code here
         }//GEN-BEGIN:|450-getter|2|
