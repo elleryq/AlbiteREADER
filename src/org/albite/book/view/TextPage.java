@@ -347,9 +347,9 @@ public class TextPage
                                             parser.position,
                                             parser.length);
 
-                                lastHyphenatedWord = null;
+                                    lastHyphenatedWord = null;
 
-                                wordsOnThisLine.addElement(rt);
+                                    wordsOnThisLine.addElement(rt);
                                 }
                             } else {
 

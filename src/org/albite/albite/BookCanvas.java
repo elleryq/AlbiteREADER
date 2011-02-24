@@ -1813,8 +1813,6 @@ public class BookCanvas extends Canvas {
 
         try {
             font = new AlbiteFont(fontName);
-        } catch (IOException ioe) {
-            throw new RuntimeException("Couldn't load font.");
         } catch (AlbiteFontException afe) {
             throw new RuntimeException("Couldn't load font.");
         }
