@@ -19,9 +19,10 @@ public class HyphenatedTextRegion extends TextRegion {
             final byte style,
             final byte color,
             final int chunkPosition,
-            final int chunkLength) {
+            final int chunkLength,
+            final int screenWidth) {
 
-        super(x, y, width, height, position, length, style, color);
+        super(x, y, width, height, position, length, style, color, screenWidth);
         this.chunkOffset = (short) (chunkPosition - position);
         this.chunkLength = (short) chunkLength;
     }
@@ -33,7 +34,8 @@ public class HyphenatedTextRegion extends TextRegion {
             final short height,
             final HyphenatedTextRegion lastRegion,
             final int chunkPosition,
-            final int chunkLength) {
+            final int chunkLength,
+            final int screenWidth) {
 
         this(x, y, width, height,
                 lastRegion.position,
@@ -41,7 +43,8 @@ public class HyphenatedTextRegion extends TextRegion {
                 lastRegion.style,
                 lastRegion.color,
                 chunkPosition,
-                chunkLength);
+                chunkLength,
+                screenWidth);
     }
 
     public final void draw(
@@ -92,7 +95,7 @@ public class HyphenatedTextRegion extends TextRegion {
         final int chunkPosition = position + chunkOffset;
 
         font.drawChars(g, textColor,
-                chapterBuffer, x, y, chunkPosition, chunkLength, width);
+                chapterBuffer, x, y, chunkPosition, chunkLength, screenWidth);
 
         if (chapterBuffer[chunkPosition + chunkLength - 1] != '-'
                 && (chunkPosition + chunkLength != position + length))

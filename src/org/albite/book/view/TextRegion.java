@@ -13,6 +13,7 @@ public class TextRegion extends Region {
 
     protected final byte  color;
     protected final byte  style;
+    protected final int screenWidth;
 
     public TextRegion (
             final short x,
@@ -22,12 +23,14 @@ public class TextRegion extends Region {
             final int position,
             final int length,
             final byte style,
-            final byte color) {
+            final byte color,
+            final int screenWidth) {
 
         super(x, y, width, height, position);
         this.length = (short) length;
         this.style = style;
         this.color = color;
+        this.screenWidth = screenWidth;
     }
 
     public void draw(

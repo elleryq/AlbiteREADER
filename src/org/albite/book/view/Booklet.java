@@ -342,4 +342,8 @@ public class Booklet {
     public final Chapter getChapter() {
         return chapter;
     }
+
+    public final int getWidth() {
+        return width;
+    }
 }

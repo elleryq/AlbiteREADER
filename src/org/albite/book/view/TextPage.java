@@ -345,7 +345,8 @@ public class TextPage
                                             (short) fontHeight,
                                             lastHyphenatedWord,
                                             parser.position,
-                                            parser.length);
+                                            parser.length,
+                                            booklet.getWidth());
 
                                     lastHyphenatedWord = null;
 
@@ -361,7 +362,8 @@ public class TextPage
                                             new TextRegion((short) 0, (short) 0,
                                             (short) wordPixelWidth,
                                             (short) fontHeight, parser.position,
-                                            parser.length, style, color));
+                                            parser.length, style, color,
+                                            booklet.getWidth()));
                                 }
                             }
 
@@ -373,81 +375,6 @@ public class TextPage
                              * try to hyphenate word
                              */
                             dashWidth = font.dashWidth;
-
-                            //#if !(TinyMode || TinyModeExport || LightMode || LightModeExport)
-                            if (hyphenator != null) {
-                                ZLTextHyphenationInfo info = hyphenator.getInfo(
-                                        buffer, parser.position, parser.length);
-
-                                /*
-                                 * try to hyphenate word, so that the largest
-                                 * possible chunk is on this line
-                                 */
-
-                                /*
-                                 * wordInfo.length - 2: starts from one before
-                                 * the last
-                                 */
-                                for (int i = parser.length - 2; i > 0; i--) {
-                                    if (info.isHyphenationPossible(i)) {
-                                        wordPixelWidth = font.charsWidth(buffer,
-                                                parser.position, i) + dashWidth;
-
-                                        /*
-                                         * This part of the word fits on the line
-                                         */
-                                        if (wordPixelWidth < width - posX) {
-
-                                            /*
-                                             * If the word chunk already ends with a
-                                             * dash, include it.
-                                             */
-                                            if (buffer[parser.position + i]
-                                                    == '-') {
-                                                i++;
-                                            }
-
-                                            if (i > 0) {
-                                            HyphenatedTextRegion rt;
-                                            if (lastHyphenatedWord != null){
-                                                rt = new
-                                                    HyphenatedTextRegion(
-                                                    (short) 0, (short) 0,
-                                                    (short) wordPixelWidth,
-                                                    (short) fontHeight,
-                                                    lastHyphenatedWord,
-                                                    parser.position,
-                                                    i);
-                                            } else {
-                                                rt = new
-                                                    HyphenatedTextRegion(
-                                                    (short) 0, (short) 0,
-                                                    (short) wordPixelWidth,
-                                                    (short) fontHeight,
-                                                    parser.position,
-                                                    parser.length,
-                                                    style,
-                                                    color,
-                                                    parser.position,
-                                                    i);
-                                                }
-
-                                                wordsOnThisLine.addElement(rt);
-                                                lastHyphenatedWord = rt;
-                                            }
-
-                                            parser.position += i;
-                                            parser.length = 0;
-                                            posX += wordPixelWidth;
-                                            firstWord = false;
-
-                                            /* the word was hyphented */
-                                            break line;
-                                        }
-                                    }
-                                }
-                            }
-                            //#endif
 
                             /*
                              * The word could not be hyphenated. Could it fit
@@ -484,7 +411,8 @@ public class TextPage
                                                     (short) fontHeight,
                                                     lastHyphenatedWord,
                                                     parser.position,
-                                                    parser.length);
+                                                    parser.length,
+                                                    booklet.getWidth());
                                             } else {
                                                 rt = new
                                                     HyphenatedTextRegion(
@@ -496,7 +424,8 @@ public class TextPage
                                                     style,
                                                     color,
                                                     parser.position,
-                                                    parser.length);
+                                                    parser.length,
+                                                    booklet.getWidth());
                                             }
 
                                             wordsOnThisLine.addElement(rt);

@@ -22,6 +22,7 @@ public class AlbiteFont {
     public    final int             maximumWidth;
 
     private   final Font            font;
+    private   final int             theCCharWidth;
 
     public final int                spaceWidth;
     public final int                dashWidth;
@@ -45,6 +46,12 @@ public class AlbiteFont {
         return Font.SIZE_SMALL;
     }
 
+    private int decideCharWidth( int size ) {
+        if( size<=theCCharWidth/2 )
+            return theCCharWidth/2;
+        return size+2;
+    }
+
     public AlbiteFont(final String fontname)
             throws AlbiteFontException {
 
@@ -52,17 +59,22 @@ public class AlbiteFont {
 
         if( fontname.startsWith("status") ) {
             font = Font.getFont( Font.FACE_SYSTEM, Font.STYLE_PLAIN, Font.SIZE_SMALL );
+            maximumWidth=8;
         }
         else if( fontname.startsWith("droid-serif_it")) {
             font = Font.getFont( Font.FACE_PROPORTIONAL, Font.STYLE_ITALIC, decideProperSize(parseFontSize(fontname)) );
+            maximumWidth=0;
         }
         else if( fontname.startsWith("droid-serif")) {
             font = Font.getFont( Font.FACE_PROPORTIONAL, Font.STYLE_PLAIN, decideProperSize(parseFontSize(fontname)) );
+            maximumWidth=0;
         }
         else {
             throw new AlbiteFontException(INVALID_FILE_ERROR);
         }
 
+        theCCharWidth = font.charWidth('中');
+        
         /*
          * 1 byte for linespacing
          */
@@ -74,15 +86,10 @@ public class AlbiteFont {
          */
         lineHeight = font.getHeight();
 
-        /*
-        spaceWidth = charWidth(' ');
-        dashWidth = charWidth('-');
-        questionWidth = charWidth('?');
-         */
-        spaceWidth = 8;
-        dashWidth = 8;
-        questionWidth = 8;
-        maximumWidth=0;
+        spaceWidth = decideCharWidth( charWidth(' ') );
+        dashWidth = decideCharWidth( charWidth('-') );
+        questionWidth = decideCharWidth( charWidth('?') );
+
     }
 
     public final String getFontname() {
@@ -98,15 +105,16 @@ public class AlbiteFont {
             res += charWidth(c[i]);
         }
 
-        //AlbiteMIDlet.LOGGER.log( "charsWidth()=" + res );
         return res;
     }
 
     public final int charWidth(char c) {
-        if( (int)c>0xff )
-            return font.charWidth( c );
+        if( (int)c>0xff ) {
+            //return font.charWidth( c );
+            return theCCharWidth;
+        }
         else
-            return 8;
+            return theCCharWidth/2;
     }
 
     public final int charsWidth(final char[] c) {
@@ -128,7 +136,7 @@ public class AlbiteFont {
             c = buffer[i];
             drawCharFromSystem( g, color, c, x, y );
             x+=charWidth((char)c);
-            if( limitedWidth>0 && (x+16)>limitedWidth )
+            if( limitedWidth>0 && (x+theCCharWidth)>=limitedWidth )
                 break;
         }
     }
