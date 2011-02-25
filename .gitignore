@@ -10,3 +10,7 @@ trash
 
 # Log files
 *.log
+
+#
+Thumbs.db
+*~
