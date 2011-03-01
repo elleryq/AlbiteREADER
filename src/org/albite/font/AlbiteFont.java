@@ -113,8 +113,11 @@ public class AlbiteFont {
             //return font.charWidth( c );
             return theCCharWidth;
         }
-        else
-            return theCCharWidth/2;
+        else {
+            FontCache cache = FontCache.getInstance();
+            return cache.getFontCharWidth(font, c);
+            //return theCCharWidth/2;
+        }
     }
 
     public final int charsWidth(final char[] c) {
@@ -136,7 +139,7 @@ public class AlbiteFont {
             c = buffer[i];
             drawCharFromSystem( g, color, c, x, y );
             x+=charWidth((char)c);
-            if( limitedWidth>0 && (x+theCCharWidth)>=limitedWidth )
+            if( limitedWidth>0 && (i+1)<end && (x+charWidth(buffer[i+1]))>=limitedWidth )
                 break;
         }
     }
